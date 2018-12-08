@@ -3,8 +3,8 @@ function charCount(str) {
 	for (let i = 0; i < str.length; i++) {
 		char = str[i].toLowerCase();
 		notChar = " !@#$%^&*()_+}{:?><~``[];',./?\|";
-		for (let i = 0; i < notChar.length; i++) {
-			if (char === notChar[i]) {
+		for (let j = 0; j < notChar.length; j++) {
+			if (char === notChar[j]) {
 				char = null;
 			}
 		}

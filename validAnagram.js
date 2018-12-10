@@ -1,4 +1,4 @@
-function validAnagram(str1, str2) {
+const validAnagram = (str1, str2) => {
     if (str1.length !== str2.length) {
         return false;
     }
@@ -23,4 +23,24 @@ function validAnagram(str1, str2) {
     return true;
 }
 
-console.log(validAnagram('aaza', 'zzaa'));
+const validAnagramTwo = (str1, str2) => {
+    if (str1.length !== str2.length) {
+        return false;
+    }
+    let lookup = {};
+    for (let letter of str1) {
+        lookup[letter] = lookup[letter] + 1 || 1;
+    }
+    console.log(lookup);
+    for (let letter of str2) {
+        if (!lookup[letter]) {
+            return false
+        } else {
+            lookup[letter]--;
+        }
+    }
+    console.log(lookup);
+    return true;
+}
+
+console.log(validAnagramTwo('aaza', 'zaaa'));

@@ -28,9 +28,10 @@ const maxSubArraySumTwo = (arr, num) => {
     tempSum = maxSum;
     for (let i = num; i < arr.length; i++) {
         tempSum = tempSum - arr[i - num] + arr[i];
-        if (tempSum > maxSum) {
-            maxSum = tempSum;
-        }
+        // if (tempSum > maxSum) {
+        //     maxSum = tempSum;
+        // }
+         tempSum > maxSum ? maxSum = tempSum : tempSum;
     }
     return maxSum;
 }

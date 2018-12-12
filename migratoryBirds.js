@@ -18,10 +18,10 @@ const migratoryBirds = (birds) => {
             birdArr.push(parseInt(key));
         }
     }
-    let minBird = Infinity
+    let minBird = Infinity;
     for (let bird of birdArr) {
         if (bird < minBird) {
-            minBird = bird
+            minBird = bird;
         }
     }
     console.log(birdObj);

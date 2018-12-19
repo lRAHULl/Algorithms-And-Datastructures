@@ -8,6 +8,7 @@ Average Case: O(n ^ 2)
 Worst Case: O(n ^ 2)
 
 Space Complexity => O(1)
+
 Large items in an array, bubble up at the top.
  */
 

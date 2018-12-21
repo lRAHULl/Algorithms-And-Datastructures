@@ -1,14 +1,11 @@
 function solve(a, b, n) {
-    let arr = [];
-    arr[0] = a;
-    arr[1] = b;
-    for (let i = 2; i <= n; i++) {
-        // console.log(arr);
-        arr.push(arr[0] + arr[1]);
-        // if (arr.length !== 4 && arr.length > 4) arr.splice(0, 2);
-        console.log(arr);
-    }
-    // return arr[arr.length - 1];
+  let arr = [a, b];
+  for (let i = 2; i <= n; i++) {
+    arr[2] = arr[0] + arr[1];
+    arr[0] = arr[1];
+    arr[1] = arr[2];
+  }
+  return arr[1];
 }
 
-console.log(solve(7, 8,10));
+console.log(solve(9, 1, 7));

@@ -1,5 +1,3 @@
-# FUN FACT: FROM THIS CHALLENGE I FOUND THAT **JAVA IS WAY FASTER THAN PYTHON :-)**  -lRAHULl
-# THANKS FOR CHECKING, NEVER CHEAT YOURSELF, THIS CODE IS NOT FOR PUBLIC USE. haha-- just kidding.
 def shortPalindrome(s):
     """
     Time Complexity(both Best and Worst): O(n ^ 2)   

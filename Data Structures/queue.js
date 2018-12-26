@@ -5,12 +5,14 @@ class Node {
     }
 }
 
+
 /**
- STACK => LIFO Data Structure
- =========================== 
+ 
+ Queue => FIFO Data Structure
+ ============================
  
 
- 
+
  Time Complexity
  ===============
  Insertion - O(1)
@@ -22,41 +24,40 @@ class Node {
  Access - O(N)
 
  */
-class Stack {
+class Queue {
     constructor() {
-        this.size = 0;
         this.first = null;
         this.last = null;
+        this.length = 0;
     }
-    push(value) {
+    enqueue(value) {
         let newNode = new Node(value);
-        if (!this.first) {
+        if (this.length === 0) {
             this.first = newNode;
             this.last = this.first;
         } else {
-            let temp = newNode;
-            temp.next = this.first;
-            this.first = temp;
+            this.last.next = newNode;
+            this.last = newNode;
         }
-        this.size++;
-        return this.size;
+        this.length++;
+        return this.length;
     }
-    pop() {
-        if (this.size === 0) return null;
+    dequeue() {
+        if (this.length === 0) return null;
         let removed = this.first;
-        if (this.size === 1) {
+        if (this.length === 1) {
             this.first = null;
             this.last = null;
         } else {
             this.first = this.first.next;
         }
-        this.size--;
+        this.length--;
         return removed.value;
     }
     print() {
         let arr = [];
         let temp = this.first;
-        for (let i = 0; i < this.size; i++) {
+        for (let i = 0; i < this.length; i++) {
             arr.push(temp.value);
             temp = temp.next;
         }
@@ -64,16 +65,13 @@ class Stack {
     }
 }
 
-let stack = new Stack();
-stack.push(1);
-stack.push(2);
-stack.push(3);
-stack.push(4);
-console.log(stack.push(5));
-console.log(stack.pop());
-// stack.pop()
-// stack.pop()
-// stack.pop()
-// console.log(stack.pop())
-stack.print();
-// console.log(stack);
+let q = new Queue();
+q.enqueue(10);
+q.enqueue(20);
+q.enqueue(30);
+console.log(q.dequeue());
+// console.log(q.dequeue());
+// console.log(q.dequeue());
+// console.log(q.dequeue());
+q.print();
+console.log(q);

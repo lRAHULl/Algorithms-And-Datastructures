@@ -46,7 +46,6 @@ class SinglyLinkedList {
             newTail = oldTail;
             oldTail = oldTail.next;
         }
-        let val = this.tail.value;
         this.tail = newTail;
         this.tail.next = null;
         this.length--;

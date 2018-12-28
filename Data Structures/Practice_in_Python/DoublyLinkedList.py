@@ -1,10 +1,11 @@
-class Node:
+class Node():
     def __init__(self, value):
         self.value = value
+        self.prev = None
         self.next = None
 
 
-class LinkedList:
+class DoublyLinkedList():
     def __init__(self):
         self.length = 0
         self.head = None
@@ -12,11 +13,12 @@ class LinkedList:
 
     def push(self, value):
         newNode = Node(value)
-        if (self.head == None):
+        if self.length == 0:
             self.head = newNode
             self.tail = self.head
         else:
             self.tail.next = newNode
+            newNode.prev = self.tail
             self.tail = newNode
         self.length += 1
         return self
@@ -24,60 +26,51 @@ class LinkedList:
     def pop(self):
         if self.length == 0:
             return None
-        removed = self.tail
-        if self.length == 1:
-            self.head = None
-            self.tail = None
-        else:
-            prev = self.head
-            temp = self.head
-            while(temp.next != None):
-                prev = temp
-                temp = temp.next
-            self.tail = prev
-            self.tail.next = None
+        oldTail = self.tail
+        newTail = self.tail.prev
+        newTail.next = None
+        oldTail.prev = None
+        self.tail = newTail
         self.length -= 1
-        return removed.value
+        return oldTail.value
 
     def shift(self):
         if self.length == 0:
             return None
-        removed = self.head
+        oldHead = self.head
         newHead = self.head.next
+        oldHead.next = None
+        newHead.prev = None
         self.head = newHead
         self.length -= 1
-        return removed.value
+        return oldHead.value
 
     def unshift(self, value):
         newNode = Node(value)
-        if (self.head == None):
+        if self.length == 0:
             self.head = newNode
             self.tail = self.head
         else:
-            temp = self.head
+            self.head.prev = newNode
+            newNode.next = self.head
             self.head = newNode
-            newNode.next = temp
         self.length += 1
         return self
 
     def get(self, pos):
         if (pos < 0 or pos >= self.length):
             return None
-        temp = self.head
+        current = self.head
         for _ in range(pos):
-            temp = temp.next
-        return temp
+            current = current.next
+        return current
 
     def set(self, pos, value):
         if (pos < 0 or pos >= self.length):
             return None
-        if self.length == 0:
-            return None
-        foundNote = self.get(pos)
-        if foundNote:
-            foundNote.value = value
-            return foundNote.value
-        return False
+        current = self.get(pos)
+        current.value = value
+        return current
 
     def insert(self, pos, value):
         newNode = Node(value)
@@ -92,8 +85,10 @@ class LinkedList:
         for i in range(pos):
             prev = temp
             temp = temp.next
+        temp.prev = newNode
         newNode.next = temp
         prev.next = newNode
+        newNode.prev = prev
         self.length += 1
         return self
 
@@ -109,9 +104,13 @@ class LinkedList:
         for i in range(pos):
             prev = temp
             temp = temp.next
-        prev.next = temp.next
+        removed = temp
+        temp = temp.next
+        temp.prev = prev
+        prev.next = temp
+        value = removed.value
         self.length -= 1
-        return temp.value
+        return value
 
     def reverse(self):
         node = self.head
@@ -127,28 +126,22 @@ class LinkedList:
         return self
 
     def log(self):
-        arr = []
+        data = []
         current = self.head
-        while (current):
-            arr.append(current.value)
+        for i in range(self.length):
+            data.append(current.value)
             current = current.next
-        print(arr)
+        print(data)
 
 
-list = LinkedList()
-list.push(10)
-list.push(20)
-list.push(30)
-list.push(40)
-list.push(50)
-print(list.tail.value)
+list = DoublyLinkedList()
+list.unshift(12)
+list.unshift(10)
+list.unshift(100)
 list.log()
-# print(list.shift())
-# print(list.shift())
-# print(list.shift())
-list.insert(4, 2000)
-list.log()
-print(list.remove(4))
-list.log()
+# print(list.remove(1))
 list.reverse()
 list.log()
+# print(list.shift())
+# print(list.pop())
+# list.log()

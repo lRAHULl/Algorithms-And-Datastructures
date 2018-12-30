@@ -110,6 +110,16 @@ class BinarySearchTree:
         traverse(current)
         return data
 
+    def height(self, root):
+        if not root:
+            return -1
+        leftDepth = self.height(root.left)
+        rightDepth = self.height(root.right)
+        if leftDepth > rightDepth:
+            return leftDepth + 1
+        else:
+            return rightDepth + 1
+
 
 t = BinarySearchTree()
 t.insert(5)
@@ -125,4 +135,5 @@ print(t.BFS())  # [5, 3, 8, 1, 4, 6, 9]
 print(t.DFSPreOrder())  # [5, 3, 1, 4, 8, 6, 9]
 print(t.DFSPostOrder())  # [1, 4, 3, 6, 9, 8, 5]
 print(t.DFSInOrder())  # [1, 3, 4, 5, 6, 8, 9]
+print(t.height(t.root))
 # print(t.root.left.left.value)

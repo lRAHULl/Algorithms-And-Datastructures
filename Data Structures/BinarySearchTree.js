@@ -85,6 +85,18 @@ class BinarySearchTree {
       }
     }
   }
+  height(root) {
+    if (!root) {
+      return -1;
+    }
+    var leftIndex = this.height(root.left);
+    var rightIndex = this.height(root.right);
+    if (leftIndex > rightIndex) {
+      return leftIndex + 1;
+    } else {
+      return rightIndex + 1;
+    }
+  }
 }
 
 let tree = new BinarySearchTree();
@@ -97,6 +109,7 @@ tree.insert(11);
 tree.insert(16);
 // console.log(tree.insert(16)); // null
 tree.insert(3);
+console.log(tree.height(tree.root)); // 3
 // console.log(tree.root.left.value); // 5
 // console.log(tree.root.left.left.value); // 2
 // console.log(tree.root.left.right.value); // 7
@@ -104,7 +117,7 @@ tree.insert(3);
 // console.log(tree.root.right.left.value); // 11
 // console.log(tree.root.right.right.value); // 16
 // console.log(tree.root.left.left.right.value); // 3
-console.log(tree.find(5)); // true
+// console.log(tree.find(5)); // true
 // console.log(tree.find(2)); // true
 // console.log(tree.find(7)); // true
 // console.log(tree.find(13)); // true

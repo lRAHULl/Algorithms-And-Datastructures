@@ -136,4 +136,5 @@ print(t.DFSPreOrder())  # [5, 3, 1, 4, 8, 6, 9]
 print(t.DFSPostOrder())  # [1, 4, 3, 6, 9, 8, 5]
 print(t.DFSInOrder())  # [1, 3, 4, 5, 6, 8, 9]
 print(t.height(t.root))
+print(t.has_cycle())
 # print(t.root.left.left.value)

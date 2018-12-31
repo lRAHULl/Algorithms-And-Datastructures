@@ -7,7 +7,7 @@ const same = (arr1, arr2) => {
         return false;
     }
     for (let element of arr1) {
-        let correctIndex = arr2.indexOf(element ** 2)
+        let correctIndex = arr2.indexOf(element ** 2);
         if (correctIndex === -1) {
             return false;
         }

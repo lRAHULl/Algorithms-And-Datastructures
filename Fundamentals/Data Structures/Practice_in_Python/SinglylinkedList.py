@@ -134,6 +134,16 @@ class LinkedList:
             current = current.next
         print(arr)
 
+    def has_cycle(self):
+        current = self.head
+        seen = set()
+        while current:
+            if current in seen:
+                return True
+            seen.add(current)
+            current = current.next
+        return False
+
 
 list = LinkedList()
 list.push(10)
@@ -152,3 +162,4 @@ print(list.remove(4))
 list.log()
 list.reverse()
 list.log()
+print(list.has_cycle())

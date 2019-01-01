@@ -43,15 +43,51 @@ class Graph {
       return console.error("vertex not found!");
     }
   }
+  DFSIterative(start) {
+    const list = this.adjacencyList;
+    const stack = [];
+    const visited = {};
+    const result = [];
+    let vertex;
+
+    stack.push(start);
+    while (stack.length) {
+      vertex = stack.pop();
+      if (!visited[vertex]) {
+        visited[vertex] = true;
+        result.push(vertex);
+        list[vertex].forEach(neighbor => {
+          stack.push(neighbor);
+        });
+      }
+    }
+    return result;
+  }
 }
+
+//          A
+//        /   \
+//       B     C
+//       |     |
+//       D --- E
+//        \   /
+//          F
+
 let g = new Graph();
-g.addVertex("Rahul");
-g.addVertex("Becky");
-g.addVertex("BadBunny");
-g.addEdge("Rahul", "Becky");
-g.addEdge("Rahul", "BadBunny");
-g.addEdge("Becky", "BadBunny");
-console.log(g);
-g.removeEdge("Becky", "BadBunny");
-g.removeVertex("BadBunny");
-console.log(g);
+
+g.addVertex("A");
+g.addVertex("B");
+g.addVertex("C");
+g.addVertex("D");
+g.addVertex("E");
+g.addVertex("F");
+
+g.addEdge("A", "B");
+g.addEdge("A", "C");
+g.addEdge("B", "D");
+g.addEdge("C", "E");
+g.addEdge("D", "E");
+g.addEdge("D", "F");
+g.addEdge("E", "F");
+
+console.log(g.DFSIterative("A"));

@@ -1,12 +1,30 @@
 /**
+ * Time Complexity :
+ * ===============
+ * 
+ * Inseration: O(log N)
+ * 
+ * Removal: O(log N)
+ * 
+ * Search: O(N)
+ * 
+ * Rules:
+ * =====
  * 
  * parent at index -> n
+ * 
  * L-Child -> 2n + 1
+ * 
  * R-child -> 2n + 2
  * 
  * child at n -> parent at int((n-1)/2)
+ * 
+ * In a Max Binary Tree - > Parents are always larger than their Children.
+ * 
  */
 
+
+// MaxBinaryHeap
 class MaxBinaryHeap {
   constructor() {
     this.values = [];
@@ -79,6 +97,7 @@ class MaxBinaryHeap {
     }
   }
 }
+
 
 let heap = new MaxBinaryHeap();
 heap.insert(10);

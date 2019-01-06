@@ -1,26 +1,26 @@
 class WeightedGraph {
-    constructor() {
-        this.adjacencyList = {};
-    }
+  constructor() {
+    this.adjacencyList = {};
+  }
 
-    addVertex(vertex) {
-        if (!(vertex in this.adjacencyList)) {
-            this.adjacencyList[vertex] = [];
-        }
+  addVertex(vertex) {
+    if (!(vertex in this.adjacencyList)) {
+      this.adjacencyList[vertex] = [];
     }
+  }
 
-    addEdge(vertex1, vertex2, weight) {
-        if (vertex1 && vertex2 in this.adjacencyList) {
-            this.adjacencyList[vertex1].push({
-                node: vertex2,
-                weight
-            });
-            this.adjacencyList[vertex2].push({
-                node: vertex1,
-                weight
-            });
-        }
+  addEdge(vertex1, vertex2, weight) {
+    if (vertex1 && vertex2 in this.adjacencyList) {
+      this.adjacencyList[vertex1].push({
+        node: vertex2,
+        weight
+      });
+      this.adjacencyList[vertex2].push({
+        node: vertex1,
+        weight
+      });
     }
+  }
 }
 
 let g = new WeightedGraph();

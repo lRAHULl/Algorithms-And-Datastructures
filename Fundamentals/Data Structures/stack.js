@@ -1,8 +1,8 @@
 class Node {
-    constructor(value) {
-        this.value = value;
-        this.next = null;
-    }
+  constructor(value) {
+    this.value = value;
+    this.next = null;
+  }
 }
 
 /**
@@ -23,45 +23,45 @@ class Node {
 
  */
 class Stack {
-    constructor() {
-        this.size = 0;
-        this.first = null;
-        this.last = null;
+  constructor() {
+    this.size = 0;
+    this.first = null;
+    this.last = null;
+  }
+  push(value) {
+    let newNode = new Node(value);
+    if (!this.first) {
+      this.first = newNode;
+      this.last = this.first;
+    } else {
+      let temp = newNode;
+      temp.next = this.first;
+      this.first = temp;
     }
-    push(value) {
-        let newNode = new Node(value);
-        if (!this.first) {
-            this.first = newNode;
-            this.last = this.first;
-        } else {
-            let temp = newNode;
-            temp.next = this.first;
-            this.first = temp;
-        }
-        this.size++;
-        return this.size;
+    this.size++;
+    return this.size;
+  }
+  pop() {
+    if (this.size === 0) return null;
+    let removed = this.first;
+    if (this.size === 1) {
+      this.first = null;
+      this.last = null;
+    } else {
+      this.first = this.first.next;
     }
-    pop() {
-        if (this.size === 0) return null;
-        let removed = this.first;
-        if (this.size === 1) {
-            this.first = null;
-            this.last = null;
-        } else {
-            this.first = this.first.next;
-        }
-        this.size--;
-        return removed.value;
+    this.size--;
+    return removed.value;
+  }
+  print() {
+    let arr = [];
+    let temp = this.first;
+    for (let i = 0; i < this.size; i++) {
+      arr.push(temp.value);
+      temp = temp.next;
     }
-    print() {
-        let arr = [];
-        let temp = this.first;
-        for (let i = 0; i < this.size; i++) {
-            arr.push(temp.value);
-            temp = temp.next;
-        }
-        console.log(arr);
-    }
+    console.log(arr);
+  }
 }
 
 let stack = new Stack();

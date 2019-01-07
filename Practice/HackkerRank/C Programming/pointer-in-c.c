@@ -4,7 +4,8 @@ void update(int *a,int *b) {
     // Complete this function  
     *a = *a + *b;
     // Because *a has been updated
-    *b = abs(*a - 2**b);
+    *b = abs(*a - *b - *b);
+    // *b = abs(*a - 2**b);
 }
 
 int main() {

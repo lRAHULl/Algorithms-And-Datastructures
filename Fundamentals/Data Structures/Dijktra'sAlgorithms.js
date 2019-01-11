@@ -24,7 +24,7 @@ class WeightedGraph {
 }
 
 let g = new WeightedGraph();
-g.addVertex('A');
+g.addVertex("A");
 g.addVertex("B");
 g.addVertex("C");
 g.addVertex("D");

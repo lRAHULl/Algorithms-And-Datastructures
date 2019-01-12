@@ -22,6 +22,8 @@ class Stack:
         return self
 
     def pop(self):
+        if self.size == 0:
+            return None
         oldTop = self.first
         newTop = oldTop.next
         self.first = newTop

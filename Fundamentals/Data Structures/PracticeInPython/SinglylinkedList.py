@@ -45,6 +45,7 @@ class LinkedList:
         removed = self.head
         newHead = self.head.next
         self.head = newHead
+        removed.next = None    
         self.length -= 1
         return removed.value
 

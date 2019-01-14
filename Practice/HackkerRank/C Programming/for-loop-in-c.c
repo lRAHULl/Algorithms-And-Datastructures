@@ -19,7 +19,7 @@ int main()
             printf("%s\n", "even");
         }
         else {
-          printf("%s\n", "odd");
+            printf("%s\n", "odd");
         }
     }
     return 0;

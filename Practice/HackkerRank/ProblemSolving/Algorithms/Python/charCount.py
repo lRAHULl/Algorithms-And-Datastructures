@@ -1,5 +1,6 @@
-def charCount(str):
-	d = {i:str.count(i) for i in str}
-	print(d)
+def charCount(s):
+	d = {i:s.count(i) for i in s}
+	for i in d.values():
+		print(i)
 
 charCount('Hello!')
